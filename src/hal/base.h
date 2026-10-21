@@ -1,0 +1,143 @@
+#ifndef _H7_BASE_
+#define _H7_BASE_
+
+typedef volatile unsigned int uio32_t;
+
+typedef unsigned int uint32_t;
+typedef unsigned short uint16_t;
+typedef unsigned char uint8_t;
+
+#define BIT(place) (1 << place)
+#define MASK32(low, high) ((((uint32_t)0xFFFFFFFF) << low) & (((uint32_t)0xFFFFFFFF) >> high))
+#define MASK16(low, high) ((((uint16_t)0xFFFF) << low) & (((uint16_t)0xFFFF) >> high))
+
+#define H7_BASE_APB1_D2   0x40000000
+#define H7_BASE_APB2_D2   0x40010000
+#define H7_BASE_AHB1_D2   0x40020000
+#define H7_BASE_AHB2_D2   0x48020000
+#define H7_BASE_APB3_D1   0x50000000
+#define H7_BASE_AHB3_D1   0x52000000
+#define H7_BASE_APB4_D3   0x58000000
+#define H7_BASE_AHB4_D3   0x58020000
+
+#define H7_BASE_RAMECC3   (H7_BASE_AHB4_D3 + 0x7000)
+#define H7_BASE_HSEM      (H7_BASE_AHB4_D3 + 0x6400)
+#define H7_BASE_ADC3      (H7_BASE_AHB4_D3 + 0x6000)
+#define H7_BASE_DMAMUX2   (H7_BASE_AHB4_D3 + 0x5800)
+#define H7_BASE_BDMA      (H7_BASE_AHB4_D3 + 0x5400)
+#define H7_BASE_CRC       (H7_BASE_AHB4_D3 + 0x4C00)
+#define H7_BASE_PWR       (H7_BASE_AHB4_D3 + 0x4800)
+#define H7_BASE_RCC       (H7_BASE_AHB4_D3 + 0x4400)
+#define H7_BASE_GPIO_K    (H7_BASE_AHB4_D3 + 0x2800)
+#define H7_BASE_GPIO_J    (H7_BASE_AHB4_D3 + 0x2400)
+#define H7_BASE_GPIO_I    (H7_BASE_AHB4_D3 + 0x2000)
+#define H7_BASE_GPIO_H    (H7_BASE_AHB4_D3 + 0x1C00)
+#define H7_BASE_GPIO_G    (H7_BASE_AHB4_D3 + 0x1800)
+#define H7_BASE_GPIO_F    (H7_BASE_AHB4_D3 + 0x1400)
+#define H7_BASE_GPIO_E    (H7_BASE_AHB4_D3 + 0x1000)
+#define H7_BASE_GPIO_D    (H7_BASE_AHB4_D3 + 0xC00)
+#define H7_BASE_GPIO_C    (H7_BASE_AHB4_D3 + 0x800)
+#define H7_BASE_GPIO_B    (H7_BASE_AHB4_D3 + 0x400)
+#define H7_BASE_GPIO_A    (H7_BASE_AHB4_D3 + 0x00)
+
+#define H7_BASE_SAI4      (H7_BASE_APB4_D3 + 0x5400)
+#define H7_BASE_IWDG2     (H7_BASE_APB4_D3 + 0x4C00)
+#define H7_BASE_IWDG1     (H7_BASE_APB4_D3 + 0x4800)
+#define H7_BASE_RTC       (H7_BASE_APB4_D3 + 0x4000)
+#define H7_BASE_VREF      (H7_BASE_APB4_D3 + 0x3C00)
+#define H7_BASE_COMP      (H7_BASE_APB4_D3 + 0x3800)
+#define H7_BASE_LPTIM5    (H7_BASE_APB4_D3 + 0x3000)
+#define H7_BASE_LPTIM4    (H7_BASE_APB4_D3 + 0x2C00)
+#define H7_BASE_LPTIM3    (H7_BASE_APB4_D3 + 0x2800)
+#define H7_BASE_LPTIM2    (H7_BASE_APB4_D3 + 0x2400)
+#define H7_BASE_I2C4      (H7_BASE_APB4_D3 + 0x1C00)
+#define H7_BASE_SPI6      (H7_BASE_APB4_D3 + 0x1400)
+#define H7_BASE_LPUART1   (H7_BASE_APB4_D3 + 0xC00)
+#define H7_BASE_SYSCFG    (H7_BASE_APB4_D3 + 0x400)
+#define H7_BASE_EXTI      (H7_BASE_APB4_D3 + 0x00)
+
+#define H7_BASE_RAMECC1   (H7_BASE_AHB3_D1 + 0x9000)
+#define H7_BASE_DLYB_MMC1 (H7_BASE_AHB3_D1 + 0x8000)
+#define H7_BASE_MMC1      (H7_BASE_AHB3_D1 + 0x7000)
+#define H7_BASE_DLYB_QSPI (H7_BASE_AHB3_D1 + 0x6000)
+#define H7_BASE_QSPI_CTRL (H7_BASE_AHB3_D1 + 0x5000)
+#define H7_BASE_FMC_CTRL  (H7_BASE_AHB3_D1 + 0x4000)
+#define H7_BASE_JPEG      (H7_BASE_AHB3_D1 + 0x3000)
+#define H7_BASE_FLASH     (H7_BASE_AHB3_D1 + 0x2000)
+#define H7_BASE_DMA2D     (H7_BASE_AHB3_D1 + 0x1000)
+#define H7_BASE_MDMA      (H7_BASE_AHB3_D1 + 0x00)
+// This one is also AHB3 on D1
+#define H7_BASE_GPV       0x51000000
+
+#define H7_BASE_WWDG1     (H7_BASE_APB3_D1 + 0x3000)
+#define H7_BASE_LTDC      (H7_BASE_APB3_D1 + 0x1000)
+#define H7_BASE_DSIHOST   (H7_BASE_APB3_D1 + 0x00)
+
+#define H7_BASE_RAMECC2   (H7_BASE_AHB2_D2 + 0x3000)
+#define H7_BASE_DLYB_MMC2 (H7_BASE_AHB2_D2 + 0x2800)
+#define H7_BASE_MMC2      (H7_BASE_AHB2_D2 + 0x2400)
+#define H7_BASE_RNG       (H7_BASE_AHB2_D2 + 0x1800)
+#define H7_BASE_HASH      (H7_BASE_AHB2_D2 + 0x1400)
+#define H7_BASE_CRYPTO    (H7_BASE_AHB2_D2 + 0x1000)
+#define H7_BASE_DCMI      (H7_BASE_AHB2_D2 + 0x00)
+
+#define H7_BASE_OTG_FS2   (H7_BASE_AHB1_D2 + 0x60000)
+#define H7_BASE_OTG_HS1   (H7_BASE_AHB1_D2 + 0x20000)
+#define H7_BASE_ETH_MAC   (H7_BASE_AHB1_D2 + 0x8000)
+#define H7_BASE_ART_CTRL  (H7_BASE_AHB1_D2 + 0x4400)
+#define H7_BASE_ADC1_2    (H7_BASE_AHB1_D2 + 0x2000)
+#define H7_BASE_DMAMUX1   (H7_BASE_AHB1_D2 + 0x800)
+#define H7_BASE_DMA2      (H7_BASE_AHB1_D2 + 0x400)
+#define H7_BASE_DMA1      (H7_BASE_AHB1_D2 + 0x00)
+
+#define H7_BASE_HRTIM     (H7_BASE_APB2_D2 + 0x7400)
+#define H7_BASE_DFSDM1    (H7_BASE_APB2_D2 + 0x7000)
+#define H7_BASE_SAI3      (H7_BASE_APB2_D2 + 0x6000)
+#define H7_BASE_SAI2      (H7_BASE_APB2_D2 + 0x5C00)
+#define H7_BASE_SAI1      (H7_BASE_APB2_D2 + 0x5800)
+#define H7_BASE_SPI5      (H7_BASE_APB2_D2 + 0x5000)
+#define H7_BASE_TIM17     (H7_BASE_APB2_D2 + 0x4800)
+#define H7_BASE_TIM16     (H7_BASE_APB2_D2 + 0x4400)
+#define H7_BASE_TIM15     (H7_BASE_APB2_D2 + 0x4000)
+#define H7_BASE_SPI4      (H7_BASE_APB2_D2 + 0x3400)
+#define H7_BASE_SPI1      (H7_BASE_APB2_D2 + 0x3000)
+#define H7_BASE_USART6    (H7_BASE_APB2_D2 + 0x1400)
+#define H7_BASE_USART1    (H7_BASE_APB2_D2 + 0x1000)
+#define H7_BASE_TIM8      (H7_BASE_APB2_D2 + 0x400)
+#define H7_BASE_TIM1      (H7_BASE_APB2_D2 + 0x00)
+
+#define H7_BASE_CAN_MSG_RAM (H7_BASE_APB1_D2 + 0xAC00)
+#define H7_BASE_CAN_CCU   (H7_BASE_APB1_D2 + 0xA800)
+#define H7_BASE_FDCAN2    (H7_BASE_APB1_D2 + 0xA400)
+#define H7_BASE_FDCAN1    (H7_BASE_APB1_D2 + 0xA000)
+#define H7_BASE_MDIOS     (H7_BASE_APB1_D2 + 0x9400)
+#define H7_BASE_OPAMP     (H7_BASE_APB1_D2 + 0x9000)
+#define H7_BASE_SWPMI     (H7_BASE_APB1_D2 + 0x8800)
+#define H7_BASE_CRS       (H7_BASE_APB1_D2 + 0x8400)
+#define H7_BASE_UART8     (H7_BASE_APB1_D2 + 0x7C00)
+#define H7_BASE_UART7     (H7_BASE_APB1_D2 + 0x7800)
+#define H7_BASE_DAC1      (H7_BASE_APB1_D2 + 0x7400)
+#define H7_BASE_HDMI_CEC  (H7_BASE_APB1_D2 + 0x6C00)
+#define H7_BASE_I2C3      (H7_BASE_APB1_D2 + 0x5C00)
+#define H7_BASE_I2C2      (H7_BASE_APB1_D2 + 0x5800)
+#define H7_BASE_I2C1      (H7_BASE_APB1_D2 + 0x5400)
+#define H7_BASE_UART5     (H7_BASE_APB1_D2 + 0x5000)
+#define H7_BASE_UART4     (H7_BASE_APB1_D2 + 0x4C00)
+#define H7_BASE_USART3    (H7_BASE_APB1_D2 + 0x4800)
+#define H7_BASE_USART2    (H7_BASE_APB1_D2 + 0x4400)
+#define H7_BASE_SPDIFRX   (H7_BASE_APB1_D2 + 0x4000)
+#define H7_BASE_SPI3      (H7_BASE_APB1_D2 + 0x3C00)
+#define H7_BASE_SPI2      (H7_BASE_APB1_D2 + 0x3800)
+#define H7_BASE_WWDG2     (H7_BASE_APB1_D2 + 0x2C00)
+#define H7_BASE_LPTIM1    (H7_BASE_APB1_D2 + 0x2400)
+#define H7_BASE_TIM14     (H7_BASE_APB1_D2 + 0x2000)
+#define H7_BASE_TIM13     (H7_BASE_APB1_D2 + 0x1C00)
+#define H7_BASE_TIM12     (H7_BASE_APB1_D2 + 0x1800)
+#define H7_BASE_TIM7      (H7_BASE_APB1_D2 + 0x1400)
+#define H7_BASE_TIM6      (H7_BASE_APB1_D2 + 0x1000)
+#define H7_BASE_TIM5      (H7_BASE_APB1_D2 + 0xC00)
+#define H7_BASE_TIM4      (H7_BASE_APB1_D2 + 0x800)
+#define H7_BASE_TIM3      (H7_BASE_APB1_D2 + 0x400)
+#define H7_BASE_TIM2      (H7_BASE_APB1_D2 + 0x00)
+
+#endif
