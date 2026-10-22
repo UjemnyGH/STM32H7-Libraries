@@ -70,7 +70,6 @@ typedef struct rcc_s {
   uio32_t sleepClockAPB4;
   uint8_t RESREVED9[16];
 
-
   uio32_t resetStatusC1;
   uio32_t clockAHB3C1;
   uio32_t clockAHB1C1;
@@ -116,6 +115,11 @@ typedef struct rcc_s {
 } rcc_t;
 
 #define rcc ((rcc_t*)H7_BASE_RCC)
+
+/*
+ * The enums names are shorter here because of my lazy ass
+ * Imagine writing kernelClockConfigD2_2_USART234578CSIKernelClkSelect, kccd22_USART234578CSIKernelClkSelect is long enough 
+ * */
 
 typedef enum rcc_sourceControl_e {
   sc_enableHSI = BIT(0),

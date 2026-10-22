@@ -7,6 +7,11 @@ typedef unsigned int uint32_t;
 typedef unsigned short uint16_t;
 typedef unsigned char uint8_t;
 
+typedef enum bool_e {
+  bfalse = 0,
+  btrue = 1,
+} bool_t;
+
 #define BIT(place) (1 << place)
 #define MASK32(low, high) ((((uint32_t)0xFFFFFFFF) << low) & (((uint32_t)0xFFFFFFFF) >> high))
 #define MASK16(low, high) ((((uint16_t)0xFFFF) << low) & (((uint16_t)0xFFFF) >> high))
