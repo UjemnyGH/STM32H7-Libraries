@@ -5,3 +5,8 @@ A set of libaries for STM32H7 series MCU
 - RCC
 - GPIO
 - DMA
+- SPI
+- UART
+
+## Documentation
+TBD
