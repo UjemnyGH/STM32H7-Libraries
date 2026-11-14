@@ -23,6 +23,7 @@ typedef struct sdmmc_s {
   uio32_t ackTimer;
   uint32_t RESERVED1[3];
   uio32_t dmaCtrl;
+  uio32_t dmaBufferSize;
   uio32_t idmaBuffer0BaseAddr;
   uio32_t idmaBuffer1BaseAddr;
 } sdmmc_t;
@@ -106,5 +107,59 @@ typedef enum sdmmc_dataCtrl_e {
 
   sdmmc_dataCtrl_reset = 0x0
 } sdmmc_dataCtrl_t;
+
+typedef enum sdmmc_status_e {
+  sdmmc_status_cmdCrcFail = BIT(0),
+  sdmmc_status_dataCrcFail = BIT(1),
+  sdmmc_status_cmdResponseTimeout = BIT(2),
+  sdmmc_status_dataTimeout = BIT(3),
+  sdmmc_status_txFifoUnderrunError = BIT(4),
+  sdmmc_status_rxFifoOverrunError = BIT(5),
+  sdmmc_status_cmdResponseReceived = BIT(6),
+  sdmmc_status_cmdSent = BIT(7),
+  sdmmc_status_dataTransferEndedCorrectly = BIT(8),
+  sdmmc_status_dataTransferHold = BIT(9),
+  sdmmc_status_dataBlockSendOrReceived = BIT(10),
+  sdmmc_status_dataTransferAbortedByCMD12 = BIT(11),
+  // Cannot be cleared in intClear, cannot be masked in mask
+  sdmmc_status_dataPathStateMachineActive = BIT(12),
+  // Cannot be cleared in intClear, cannot be masked in mask
+  sdmmc_status_cmdPathStateMachineActive = BIT(13),
+  // Cannot be cleared in intClear
+  sdmmc_status_txFifoHalfEmpty = BIT(14),
+  // Cannot be cleared in intClear
+  sdmmc_status_rxFifoHalfFull = BIT(15),
+  // Cannot be cleared in intClear, cannot be masked in mask
+  sdmmc_status_txFifoFull = BIT(16),
+  // Cannot be cleared in intClear
+  sdmmc_status_rxFifoFull = BIT(17),
+  // Cannot be cleared in intClear
+  sdmmc_status_txFifoEmpty = BIT(18),
+  // Cannot be cleared in intClear, cannot be masked in mask
+  sdmmc_status_rxFifoEmpty = BIT(19),
+  // Cannot be cleared in intClear, cannot be masked in mask
+  sdmmc_status_cardBusyOnD0 = BIT(20),
+  sdmmc_status_cardNotBusyOnD0 = BIT(21),
+  sdmmc_status_sdioIntReceived = BIT(22),
+  sdmmc_status_bootAckCheckFail = BIT(23),
+  sdmmc_status_bootAckTimeout = BIT(24),
+  sdmmc_status_voltageSwitchCriticalTimingSectionCompletion = BIT(25),
+  sdmmc_status_ckStoppedInVoltageSwitchProcedure = BIT(26),
+  // Cannot be masked in mask
+  sdmmc_status_idmaTransferError = BIT(27),
+  sdmmc_status_idmaBufferTransferComplete = BIT(28),
+
+  sdmmc_status_reset = 0x0
+} sdmmc_status_t;
+
+typedef enum sdmmc_dmaCtrl_e {
+  sdmmc_dmaCtrl_enableDma = BIT(0),
+  sdmmc_dmaCtrl_doubleBufferMode = BIT(1),
+  sdmmc_dmaCtrl_useBuffer1 = BIT(2),
+
+  sdmmc_dmaCtrl_reset = 0x0
+} sdmmc_dmaCtrl_t;
+
+#define sdmmc_dmaBufferSize(bufferSize) ((bufferSize) << 5)
 
 #endif
